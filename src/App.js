@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Gauge from './components/Gauge';
+import ReactionGame from './components/ReactionGame';
 import './App.css';
 
 
@@ -24,7 +25,8 @@ function App() {
         onChange={(e) => setValue(Number(e.target.value))}
         style={{ width: '200px', marginTop: '1rem' }}
       />
-
+      <h1>Reaction Time Game</h1>
+      <ReactionGame />
 
       <section className="section">
         <h2>🚀Projects</h2>
