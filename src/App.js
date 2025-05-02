@@ -30,7 +30,7 @@ function App() {
         <h2>🚀Projects</h2>
         <div className="projects">
           <div className="project-card">
-            <h3>🌌Galaxy Conquest-------------------</h3>
+            <h3>🌌Galaxy Conquest</h3>
             <p>Mobile RTS built with Godot 4. Focused on PvP and resource domination.</p>
           </div>
           <div className="project-card">
