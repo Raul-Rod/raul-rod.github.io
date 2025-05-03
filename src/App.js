@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactionGame from './components/ReactionGame';
 import UnderConstruction from './components/UnderConstruction';
+import TapRace from './components/TapRace';
 import './App.css';
 
 
@@ -18,7 +19,11 @@ function App() {
 
       <section className="gamesection">
         <h1>Game Demo</h1>
+
         <UnderConstruction />
+
+        <TapRace />
+
       </section>
 
       <section className="section">
