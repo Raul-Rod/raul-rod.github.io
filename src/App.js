@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Gauge from './components/Gauge';
 import ReactionGame from './components/ReactionGame';
+import UnderConstruction from './components/UnderConstruction';
 import './App.css';
 
 
@@ -27,20 +28,10 @@ function App() {
       />
       <h1>Reaction Time Game</h1>
       <ReactionGame />
+      
+      <UnderConstruction />
+      
 
-      <section className="section">
-        <h2>🚀Projects</h2>
-        <div className="projects">
-          <div className="project-card">
-            <h3>🌌Galaxy Conquest</h3>
-            <p>Mobile RTS built with Godot 4. Focused on PvP and resource domination.</p>
-          </div>
-          <div className="project-card">
-            <h3>🌐Responsive Web Portfolio</h3>
-            <p>Personal site built with HTML, CSS, JavaScript, and PHP.</p>
-          </div>
-        </div>
-      </section>
 
       <section className="section">
         <h2>📫Contact</h2>
