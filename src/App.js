@@ -17,6 +17,7 @@ function App() {
       </header>
 
       <h1>Interactive Gauge</h1>
+
       <Gauge value={value} />
       <input
         type="range"
@@ -24,11 +25,12 @@ function App() {
         max="100"
         value={value}
         onChange={(e) => setValue(Number(e.target.value))}
-        style={{ width: '200px', marginTop: '1rem' }}
+        style={{ width: '400px', marginTop: '1rem' }}
       />
+
       <h1>Reaction Time Game</h1>
       <ReactionGame />
-      
+      <h1>Game Demo</h1>
       <UnderConstruction />
       
 
