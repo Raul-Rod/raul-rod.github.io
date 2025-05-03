@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Gauge from './components/Gauge';
 import ReactionGame from './components/ReactionGame';
 import UnderConstruction from './components/UnderConstruction';
 import './App.css';
@@ -11,29 +10,16 @@ function App() {
 
   return (
     <div className="App">
+
       <header className="header">
         <h1>Raul Rodriguez</h1>
         <p>Guatemalan-Canadian Developer | Computer Science | Android, Web, Game Dev</p>
       </header>
 
-      <h1>Interactive Gauge</h1>
-
-      <Gauge value={value} />
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
-        style={{ width: '400px', marginTop: '1rem' }}
-      />
-
-      <h1>Reaction Time Game</h1>
-      <ReactionGame />
-      <h1>Game Demo</h1>
-      <UnderConstruction />
-      
-
+      <section className="gamesection">
+        <h1>Game Demo</h1>
+        <UnderConstruction />
+      </section>
 
       <section className="section">
         <h2>📫Contact</h2>
