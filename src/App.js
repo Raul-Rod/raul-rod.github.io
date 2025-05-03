@@ -35,12 +35,28 @@ function App() {
 
           <div className="project-card">
           <h3>SKILLS SUMMARY</h3>
-          <h4>Technical Skills</h4><h4>   </h4><h4>Soft Skills</h4>
-          <li>Programming Languages: Java, C++, C, Python, JavaScript, HTML, Android Development, Godot and React</li><p>   </p><li>Strong problem-solving and analytical skills</li>
-          <li>Database Management: MS Excel, SQL and PostgreSQL</li><p>   </p><li>Excellent time management and multitasking abilities</li>
-          <li>Software: Microsoft Office Suite (Word,Excel and PowerPoint)</li><p>   </p><li>Team player with leadership experie</li>
-          <li>Frameworks & Tools: Git, Godot, Android SDK and MySQL</li><p>   </p><li>Effective verbal and written communication</li>
-          <li>Operating Systems: Windows, Linux</li><p>   </p><li>Adaptability and willingness to learn new technologies</li>
+          <p>Technical Skills
+• Programming Languages: Java, C++, C,
+Python, JavaScript, HTML, Android
+Development, Godot and React
+• Database Management: MS Excel, SQL,
+PostgreSQL
+• Software: Microsoft Office Suite (Word,
+Excel and PowerPoint)
+• Frameworks & Tools: Git, Godot,
+Android SDK, MySQL
+• Operating Systems: Windows, Linux
+Soft Skills
+• Strong problem-solving and analytical
+skills
+• Excellent time management and
+multitasking abilities
+• Team player with leadership experience
+• Effective verbal and written
+communication
+• Adaptability and willingness to learn new
+technologies
+</p>
           </div>
 
           <div className="project-card">
