@@ -11,6 +11,19 @@ const TapRace = () => {
   const timerRef = useRef(null);
   const decayRef = useRef(null);
 
+  // Load scores from localStorage on first render
+  useEffect(() => {
+    const saved = localStorage.getItem('tapRaceLeaderboard');
+    if (saved) {
+      setLeaderboard(JSON.parse(saved));
+    }
+
+    return () => {
+      clearInterval(timerRef.current);
+      clearInterval(decayRef.current);
+    };
+  }, []);
+
   const handleClick = () => {
     if (progress === 0 && !startTime) {
       const now = Date.now();
@@ -31,8 +44,8 @@ const TapRace = () => {
   };
 
   const handleFinish = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    if (decayRef.current) clearInterval(decayRef.current);
+    clearInterval(timerRef.current);
+    clearInterval(decayRef.current);
     const finalTime = elapsed;
     const newList = [...leaderboard];
     const position = newList.findIndex(t => finalTime < t.time);
@@ -45,25 +58,29 @@ const TapRace = () => {
   };
 
   const submitScore = (name) => {
+    if (name.trim().toLowerCase() === 'clean') {
+      localStorage.removeItem('tapRaceLeaderboard');
+      setLeaderboard([]);
+      setNamePrompt(false);
+      resetGame();
+      return;
+    }
+  
     const newEntry = { name, time: newTime };
-    const newList = [...leaderboard, newEntry].sort((a, b) => a.time - b.time).slice(0, 5);
+    const newList = [...leaderboard, newEntry]
+      .sort((a, b) => a.time - b.time)
+      .slice(0, 5);
     setLeaderboard(newList);
+    localStorage.setItem('tapRaceLeaderboard', JSON.stringify(newList));
     setNamePrompt(false);
     resetGame();
   };
-
+  
   const resetGame = () => {
     setProgress(0);
     setStartTime(null);
     setElapsed(0);
   };
-
-  useEffect(() => {
-    return () => {
-      clearInterval(timerRef.current);
-      clearInterval(decayRef.current);
-    };
-  }, []);
 
   return (
     <div style={{ height: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -89,9 +106,14 @@ const TapRace = () => {
       </div>
       {namePrompt && (
         <div style={{ marginTop: '10px' }}>
-          <input type="text" placeholder="Your Name" onKeyDown={(e) => {
-            if (e.key === 'Enter') submitScore(e.target.value);
-          }} />
+          <input
+            type="text"
+            placeholder="Your Name"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') submitScore(e.target.value);
+            }}
+            autoFocus
+          />
           <p>You've made the leaderboard! Press Enter to submit.</p>
         </div>
       )}

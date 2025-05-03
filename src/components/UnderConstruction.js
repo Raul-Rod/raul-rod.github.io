@@ -29,13 +29,36 @@ const UnderConstruction = () => {
   const handleInput = () => {
     if (!isRunning) {
       setIsRunning(true);
-      obstacleX.current = 600;
-      playerY.current = 200;
-      velocityY.current = 0;
-      animationRef.current = requestAnimationFrame(gameLoop);
+      startGame();
     } else {
       jump();
     }
+  };
+
+  const startGame = () => {
+    playerY.current = 200;
+    velocityY.current = 0;
+    isJumping.current = false;
+    obstacleX.current = 600;
+    animationRef.current = requestAnimationFrame(gameLoop);
+  };
+
+  const resetGame = () => {
+    cancelAnimationFrame(animationRef.current);
+    setIsRunning(false);
+  };
+
+  const detectCollision = () => {
+    const playerX = 50;
+    const playerBottom = playerY.current + PLAYER_HEIGHT;
+    const obstacleY = 260;
+
+    return (
+      playerX < obstacleX.current + OBSTACLE_WIDTH &&
+      playerX + PLAYER_WIDTH > obstacleX.current &&
+      playerY.current < obstacleY + OBSTACLE_HEIGHT &&
+      playerBottom > obstacleY
+    );
   };
 
   const gameLoop = () => {
@@ -43,11 +66,11 @@ const UnderConstruction = () => {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw background
+    // Background
     ctx.fillStyle = '#f0f0f0';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Update and draw player
+    // Update player
     velocityY.current += GRAVITY;
     playerY.current += velocityY.current;
     if (playerY.current >= 260) {
@@ -55,16 +78,30 @@ const UnderConstruction = () => {
       velocityY.current = 0;
       isJumping.current = false;
     }
+
     ctx.fillStyle = 'orange';
     ctx.fillRect(50, playerY.current, PLAYER_WIDTH, PLAYER_HEIGHT);
 
-    // Update and draw obstacle
+    // Update obstacle
     obstacleX.current -= OBSTACLE_SPEED;
     if (obstacleX.current < -OBSTACLE_WIDTH) {
       obstacleX.current = 600;
     }
+
     ctx.fillStyle = 'gray';
     ctx.fillRect(obstacleX.current, 260, OBSTACLE_WIDTH, OBSTACLE_HEIGHT);
+
+    // Draw text
+    ctx.fillStyle = 'black';
+    ctx.font = '16px sans-serif';
+    //write text 
+    ctx.fillText('', 200, 50);
+
+    // Check collision
+    if (detectCollision()) {
+      resetGame();
+      return;
+    }
 
     animationRef.current = requestAnimationFrame(gameLoop);
   };
@@ -89,7 +126,12 @@ const UnderConstruction = () => {
   return (
     <div
       ref={containerRef}
-      style={{ height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      style={{
+        height: '300px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
     >
       <canvas ref={canvasRef} style={{ border: '2px solid black' }} />
     </div>
@@ -97,4 +139,3 @@ const UnderConstruction = () => {
 };
 
 export default UnderConstruction;
-

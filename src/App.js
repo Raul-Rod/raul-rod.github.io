@@ -21,11 +21,13 @@ function App() {
         <h1>Game Demo</h1>
 
         <UnderConstruction />
-
+        <h1>
+          
+        </h1>
         <TapRace />
 
       </section>
-
+      
       <section className="section">
         <h2>📫Contact</h2>
         <p>Email: raul.rodriguez.azurdia@gmail.com</p>
