@@ -24,7 +24,7 @@ function App() {
       
       <div className="project-card">
         <h1>Test</h1>
-        <p>Made this change from my phone!</p>
+        <p>¡Made this change from my phone!</p>
       </div>
       
       <section className="section">
