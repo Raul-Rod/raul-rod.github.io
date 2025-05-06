@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Container>
-       <header className="header">
+        <header className="header">
          <h1>Raul Rodriguez</h1>
          <p>Guatemalan-Canadian | Computer Science graduate </p>
          <p>Software Dev | Game Dev | Full-Stack Dev</p>
@@ -37,9 +37,7 @@ function App() {
                   <p>Frameworks & Tools: Git, Godot, Android SDK, MySQL</p>
                   <p>Operating Systems: Windows, Linux</p>
                 </div>
-              </div>
-
-              <div class="column">
+              </div>              <div class="column">
                 <div className="project-card">
                   <h3>Soft Skills</h3>
                   <p>Strong problem-solving and analytical skills</p>
@@ -49,7 +47,6 @@ function App() {
                   <p>Adaptability and willingness to learn new technologies </p>
                 </div>
               </div> 
-
             </div>
             <div className="project-card">
               <h3>APPLIED PROJECTS</h3>
@@ -66,22 +63,23 @@ function App() {
             </div>
     </div>
   </section>
-</Container>
-      <Container>
-        <div className="project-card">
-          <JumpGame />
-          </div>
-        <div className="project-card">
-          <TapRace />
-          </div>
         <section className="section">
           <h2>📫Contact</h2>
           <p>Email: raul.rodriguez.azurdia@gmail.com</p>
           </section>
-      <footer className="footer">
-        <p>&copy; 2025 Raul Rodriguez</p>
-        </footer>
-        </Container>
+      </Container>
+      <Container>
+        <div className="projects">
+          <div className="project-card">
+            <h3>MVP Demo's</h3>
+            <JumpGame />
+            <TapRace />
+          </div>
+          <footer className="footer">
+            <p>&copy;2025 Raul Rodriguez</p>
+          </footer>
+        </div>
+      </Container>
     </div>
   );
 }
