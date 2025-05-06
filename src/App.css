@@ -57,13 +57,28 @@ body {
   margin-top: 0;
 }
 
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+/* Optional: tweak padding on smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+}
 a {
-  color: #2980b9;
-  text-decoration: none;
+  color: #1a73e8;       /* Blue like Google links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #0c47a1;        /* Darker blue on hover */
+  text-decoration: underline; /* Optional: add underline on hover */
 }
 
 .footer {
