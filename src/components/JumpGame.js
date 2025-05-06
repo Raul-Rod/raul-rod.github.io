@@ -112,7 +112,7 @@ const JumpGame = () => {
     // Ground
     ctx.fillStyle = 'green';
     ctx.fillRect(0, OBSTACLE_Y + OBSTACLE_HEIGHT, canvas.width, 20);
-    
+
     // Collision and game over
     if (detectCollision()) {
       ctx.fillStyle = 'red';
@@ -129,9 +129,16 @@ const JumpGame = () => {
   // === Canvas Init ===
   useEffect(() => {
     const canvas = canvasRef.current;
-    canvas.width = 600;
-    canvas.height = GROUND_Y;
     const ctx = canvas.getContext('2d');
+
+    const WIDTH = 600;
+    const HEIGHT = GROUND_Y;
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transforms
+    ctx.scale(1, 1);
+
     ctx.fillStyle = 'black';
     ctx.font = '20px sans-serif';
     ctx.fillText('Tap to start', 230, 50);
@@ -152,15 +159,27 @@ const JumpGame = () => {
     <div
       ref={containerRef}
       style={{
-        height: `${GROUND_Y}px`,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         userSelect: 'none',
         cursor: 'pointer',
+        width: '100%',
       }}
     >
-      <canvas ref={canvasRef} style={{ border: '2px solid black' }} />
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1000px',
+          aspectRatio: '15 / 8',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          border: '2px solid black',
+        }}
+      >
+        <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
+      </div>
     </div>
   );
 };
