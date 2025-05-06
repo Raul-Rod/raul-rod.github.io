@@ -41,6 +41,15 @@ body {
   gap: 1.5rem;
 }
 
+.projects2C {
+  display: flex;
+  grid-auto-columns: auto;
+  gap: 20px;
+}
+.column {
+  flex: 1; /* or use fixed widths like width: 50% */
+}
+
 .project-card {
   background-color: white;
   padding: 1.5rem;

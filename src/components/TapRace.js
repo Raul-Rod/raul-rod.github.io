@@ -11,7 +11,6 @@ const TapRace = () => {
   const timerRef = useRef(null);
   const decayRef = useRef(null);
 
-  // Load scores from localStorage on first render
   useEffect(() => {
     const saved = localStorage.getItem('tapRaceLeaderboard');
     if (saved) {
@@ -65,7 +64,7 @@ const TapRace = () => {
       resetGame();
       return;
     }
-  
+
     const newEntry = { name, time: newTime };
     const newList = [...leaderboard, newEntry]
       .sort((a, b) => a.time - b.time)
@@ -75,7 +74,7 @@ const TapRace = () => {
     setNamePrompt(false);
     resetGame();
   };
-  
+
   const resetGame = () => {
     setProgress(0);
     setStartTime(null);
@@ -83,11 +82,25 @@ const TapRace = () => {
   };
 
   return (
-    <div style={{ height: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-      <button onClick={handleClick} style={{ padding: '10px 20px', fontSize: '1.2rem' }}>
-        Push Me
-      </button>
-      <div style={{ width: '80%', height: '30px', border: '2px solid #000', marginTop: '20px', position: 'relative' }}>
+    <div style={{
+      height: '100%',
+      minHeight: '350px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '1rem'
+    }}>
+      {/* Gauge style bar */}
+      <div style={{
+        width: '80%',
+        height: '30px',
+        borderRadius: '15px',
+        border: '2px solid #000',
+        overflow: 'hidden',
+        marginBottom: '20px',
+        backgroundColor: '#ccc'
+      }}>
         <div style={{
           width: `${progress}%`,
           height: '100%',
@@ -95,8 +108,24 @@ const TapRace = () => {
           transition: 'width 0.2s'
         }}></div>
       </div>
-      <div style={{ marginTop: '10px' }}>Elapsed: {elapsed}s</div>
-      <div style={{ marginTop: '20px', width: '60%' }}>
+
+      {/* Round Button */}
+      <button onClick={handleClick} style={{
+        padding: '15px 30px',
+        fontSize: '1.2rem',
+        borderRadius: '50px',
+        border: 'none',
+        backgroundColor: '#007bff',
+        color: 'white',
+        cursor: 'pointer',
+        marginBottom: '20px'
+      }}>
+        Push Me
+      </button>
+
+      <div style={{ marginBottom: '10px' }}>Elapsed: {elapsed}s</div>
+
+      <div style={{ marginTop: '10px', width: '60%' }}>
         <h3>Top 5 Times</h3>
         <ol>
           {leaderboard.map((entry, idx) => (
@@ -104,6 +133,7 @@ const TapRace = () => {
           ))}
         </ol>
       </div>
+
       {namePrompt && (
         <div style={{ marginTop: '10px' }}>
           <input
