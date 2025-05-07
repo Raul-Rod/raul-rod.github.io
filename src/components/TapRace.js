@@ -105,7 +105,8 @@ const TapRace = () => {
     }}>
       <div style={{ marginTop: '50px' }}>Time: {elapsed}s</div>
       {/* Half Circle Gauge */}
-      <svg width="150" height="100" style={{ marginBottom: '-20px', zIndex: 1, position: 'relative' }}>
+      <svg width="150" height="100" style={{ marginBottom: '-20px', zIndex: 0, position: 'relative',
+      pointerEvents:'none'}}>
         <path
           d={`M ${arcStartX},${arcY} A ${gaugeRadius},${gaugeRadius} 0 0 1 ${arcEndX},${arcY}`}
           fill="none"
@@ -141,7 +142,7 @@ const TapRace = () => {
           boxShadow: `0 0 15px 5px ${buttonGlow}`,
           animation: progress > 0 ? 'pulse 1s infinite' : 'none',
           position: 'relative',
-          zIndex: 0
+          zIndex: 2
         }}
       >
         Tap
