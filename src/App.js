@@ -13,7 +13,7 @@ function App() {
       <Container>
         <header className="header">
          <h1>Raul Rodriguez</h1>
-         <p>Guatemalan-Canadian | Computer Science graduate </p>
+         <p>Computer Science graduate </p>
          <p>Software Dev | Game Dev | Full-Stack Dev</p>
          </header>
         <section className="section">
